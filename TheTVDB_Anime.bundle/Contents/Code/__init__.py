@@ -219,7 +219,7 @@ def metadata_people(people_list, meta_people_obj):
 
 class TVDBAgent(Agent.TV_Shows):
 
-  name = 'TheTVDB'
+  name = 'TheTVDB_Anime'
   languages = [Locale.Language.English, 'fr', 'zh', 'sv', 'no', 'da', 'fi', 'nl', 'de', 'it', 'es', 'pl', 'hu', 'el', 'tr', 'ru', 'he', 'ja', 'pt', 'cs', 'ko', 'sl', 'hr']
 
   def dedupe(self, results):
@@ -828,6 +828,8 @@ class TVDBAgent(Agent.TV_Shows):
     actor_data = None
     try:
       actor_data = JSON.ObjectFromString(GetResultFromNetwork(TVDB_ACTORS_URL % metadata.id, cacheTime=0 if force else CACHE_1WEEK))['data']
+
+      Log("asdfasdf: %s" % actor_data)
     except Exception, e:
       Log("Bad actor data, no update for TVDB id: %s" % metadata.id)
 
